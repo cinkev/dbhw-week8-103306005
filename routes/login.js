@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
     account : req.body.account,
     password : req.body.password
   });
- router.get('/members/:memberId', function(req, res) {
+
   Member.get(req.params.memberId, function(err, member) {
     if(err) {
       console.log('Oops , you have not registered yet!');
@@ -42,7 +42,6 @@ router.post('/', function(req, res, next) {
     }
   })
 
-});
 });
 
 

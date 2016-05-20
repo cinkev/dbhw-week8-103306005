@@ -48,7 +48,7 @@ Member.prototype.save = function (cb) {
       .update({
         name : this.name,
         account : this.account,
-        password : this.password
+        id : this.id
       })
       .then(function() {
         cb(null, this);

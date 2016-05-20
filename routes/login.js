@@ -26,17 +26,17 @@ router.get('/members/:memberId', function(req, res) {
 router.post('/', function(req, res, next) {
 
   //首先必須先產生出一個Member的物件在進行save
-  var newMember =  Member({
-    name : req.body.name,
-    account : req.body.account,
-    password : req.body.password
-  });
+  
+  var  name = req.body.name,
+       account = req.body.account,
+       password = req.body.password
+  
 
-  Member.get(req.params.memberId, function(err, member) {
-    if(err) {
-      console.log('Oops , you have not registered yet!');
-      res.redirect('/');
-    } else {
+  Member.get(account, function(err, member) {
+    if( err || password != member.password) {
+      res.redirect('/register');
+    }
+    else {
       req.session.member = newMember;
       res.redirect('/');
     }
